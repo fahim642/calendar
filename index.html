@@ -212,11 +212,19 @@
             .then(data => {
                 console.log("2. SUCCESS! Google sent this data back:", data);
                 
-                if (data.length === 0) {
-                    alert("Google connected, but it sent back 0 events! (Check your Apps Script Version)");
-                }
+                // --- THE FIX: Force all dates into YYYY-MM-DD format ---
+                events = data.map(evt => {
+                    const d = new Date(evt.date);
+                    if (!isNaN(d.getTime())) { // If it is a valid date
+                        const yyyy = d.getFullYear();
+                        const mm = String(d.getMonth() + 1).padStart(2, '0');
+                        const dd = String(d.getDate()).padStart(2, '0');
+                        evt.date = `${yyyy}-${mm}-${dd}`;
+                    }
+                    return evt;
+                });
+                // -------------------------------------------------------
 
-                events = data;
                 renderCalendar();
                 showLoading(false);
             })
@@ -225,6 +233,7 @@
                 showLoading(false);
             });
     }
+    
     function renderCalendar() {
         grid.innerHTML = "";
         const month = currentDate.getMonth();
