@@ -28,293 +28,104 @@
             background: #1f2937;
             color: #ffffff;
         }
-        .header h2 {
-            margin: 0;
-            font-size: 1.5em;
-        }
+        .header h2 { margin: 0; font-size: 1.5em; }
         .header button {
-            background: #4b5563;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            cursor: pointer;
-            border-radius: 5px;
-            font-weight: 600;
-            transition: background 0.2s;
+            background: #4b5563; color: white; border: none;
+            padding: 8px 16px; cursor: pointer; border-radius: 5px;
+            font-weight: 600; transition: background 0.2s;
         }
-        .header button:hover {
-            background: #6b7280;
-        }
+        .header button:hover { background: #6b7280; }
         .days-row {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            background: #e5e7eb;
-            font-weight: bold;
-            text-align: center;
-            padding: 12px 0;
-            color: #1f2937;
+            display: grid; grid-template-columns: repeat(7, 1fr);
+            background: #e5e7eb; font-weight: bold; text-align: center;
+            padding: 12px 0; color: #1f2937;
         }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(7, 1fr);
-            border-left: 1px solid #e5e7eb;
-        }
+        .grid { display: grid; grid-template-columns: repeat(7, 1fr); border-left: 1px solid #e5e7eb; }
         .cell {
-            border-right: 1px solid #e5e7eb;
-            border-bottom: 1px solid #e5e7eb;
-            padding: 8px;
-            min-height: 120px;
-            background: #ffffff;
-            display: flex;
-            flex-direction: column;
-            cursor: pointer; /* Indicates clicking cell adds event */
-            transition: background 0.1s;
+            border-right: 1px solid #e5e7eb; border-bottom: 1px solid #e5e7eb;
+            padding: 8px; min-height: 120px; background: #ffffff;
+            display: flex; flex-direction: column; cursor: pointer; transition: background 0.1s;
         }
-        .cell:hover {
-            background: #f9fafb;
-        }
-        .cell.empty {
-            background: #f9fafb;
-            cursor: default;
-        }
-        .cell.empty:hover {
-            background: #f9fafb;
-        }
-        .date-number {
-            font-weight: bold;
-            margin-bottom: 8px;
-            align-self: flex-end;
-            color: #6b7280;
-            font-size: 0.9em;
-            pointer-events: none;
-        }
+        .cell:hover { background: #f9fafb; }
+        .cell.empty { background: #f9fafb; cursor: default; }
+        .date-number { font-weight: bold; margin-bottom: 8px; align-self: flex-end; color: #6b7280; font-size: 0.9em; pointer-events: none; }
         .event {
-            font-size: 0.75em;
-            padding: 6px;
-            margin-bottom: 4px;
-            border-radius: 4px;
-            color: white;
-            line-height: 1.4;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-            cursor: pointer;
-            transition: opacity 0.2s;
+            font-size: 0.75em; padding: 6px; margin-bottom: 4px; border-radius: 4px;
+            color: white; line-height: 1.4; box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            cursor: pointer; transition: opacity 0.2s;
         }
-        .event:hover {
-            opacity: 0.9;
-        }
-        .event-title {
-            font-weight: bold;
-            margin-bottom: 4px;
-        }
-        .event-time {
-            font-weight: bold;
-            color: #fffae6;
-            margin-bottom: 4px;
-        }
-        .event-note {
-            font-style: italic;
-            margin-top: 4px;
-            border-top: 1px solid rgba(255,255,255,0.3);
-            padding-top: 4px;
-        }
+        .event:hover { opacity: 0.9; }
+        .event-title { font-weight: bold; margin-bottom: 4px; }
+        .event-time { font-weight: bold; color: #fffae6; margin-bottom: 4px; }
+        .event-note { font-style: italic; margin-top: 4px; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 4px; }
         .event-person {
-            padding: 2px 6px;
-            margin-bottom: 2px;
-            border-radius: 3px;
-            font-size: 0.9em;
-            font-weight: 500;
-            box-shadow: 0 1px 2px rgba(0,0,0,0.2); 
-            color: white;
-            text-shadow: 0px 1px 2px rgba(0,0,0,0.4);
+            padding: 2px 6px; margin-bottom: 2px; border-radius: 3px;
+            font-size: 0.9em; font-weight: 500; box-shadow: 0 1px 2px rgba(0,0,0,0.2); 
+            color: white; text-shadow: 0px 1px 2px rgba(0,0,0,0.4);
         }
         
-        /* Group Colors */
         .group-day-trip { background-color: #10b981; } 
         .group-1 { background-color: #3b82f6; }        
         .group-2 { background-color: #8b5cf6; }        
         
-        .legend {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-            font-size: 0.85em;
-        }
-        .legend-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .legend-color {
-            width: 16px;
-            height: 16px;
-            border-radius: 4px;
+        .legend { display: flex; justify-content: center; gap: 20px; margin-top: 20px; font-size: 0.85em; }
+        .legend-item { display: flex; align-items: center; gap: 8px; }
+        .legend-color { width: 16px; height: 16px; border-radius: 4px; }
+
+        .loading-overlay {
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(255,255,255,0.8); z-index: 1000;
+            justify-content: center; align-items: center; font-weight: bold; font-size: 1.2em; color: #1f2937;
         }
 
-        /* Modal Styles */
         .modal {
-            display: none; 
-            position: fixed; 
-            z-index: 100; 
-            left: 0; top: 0;
-            width: 100%; height: 100%; 
-            background-color: rgba(0,0,0,0.5);
+            display: none; position: fixed; z-index: 100; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5);
         }
         .modal-content {
-            background-color: #fff;
-            margin: 5% auto;
-            padding: 20px 30px;
-            border-radius: 8px;
-            width: 400px;
-            max-height: 85vh;
-            overflow-y: auto;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            background-color: #fff; margin: 5% auto; padding: 20px 30px; border-radius: 8px;
+            width: 400px; max-height: 85vh; overflow-y: auto; box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
-        .close {
-            color: #aaa;
-            float: right;
-            font-size: 28px;
-            font-weight: bold;
-            cursor: pointer;
+        .close { color: #aaa; float: right; font-size: 28px; font-weight: bold; cursor: pointer; }
+        .close:hover, .close:focus { color: black; text-decoration: none; }
+        .modal-content label { display: block; margin-top: 15px; font-weight: 600; font-size: 0.9em; }
+        .modal-content input[type="text"], .modal-content input[type="date"], .modal-content input[type="time"], .modal-content select, .modal-content textarea {
+            width: 100%; padding: 8px; margin-top: 5px; border: 1px solid #ccc; border-radius: 4px; box-sizing: border-box; font-family: inherit;
         }
-        .close:hover,
-        .close:focus {
-            color: black;
-            text-decoration: none;
-        }
-        .modal-content label {
-            display: block;
-            margin-top: 15px;
-            font-weight: 600;
-            font-size: 0.9em;
-        }
-        .modal-content input[type="text"], 
-        .modal-content input[type="date"], 
-        .modal-content input[type="time"], 
-        .modal-content select, 
-        .modal-content textarea {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-family: inherit;
-        }
-        
-        .time-inputs {
-            display: flex;
-            gap: 15px;
-        }
-        .time-inputs div {
-            flex: 1;
-        }
-        .time-inputs label {
-            margin-top: 10px;
-        }
-
+        .time-inputs { display: flex; gap: 15px; }
+        .time-inputs div { flex: 1; }
         .checkbox-group {
-            max-height: 120px;
-            overflow-y: auto;
-            border: 1px solid #ccc;
-            padding: 8px;
-            border-radius: 4px;
-            margin-top: 5px;
-            background: #f9fafb;
+            max-height: 120px; overflow-y: auto; border: 1px solid #ccc; padding: 8px; border-radius: 4px; margin-top: 5px; background: #f9fafb;
         }
-        .checkbox-group label {
-            display: flex;
-            align-items: center;
-            margin-top: 0;
-            margin-bottom: 5px;
-            font-weight: normal;
-            font-size: 0.9em;
-            cursor: pointer;
-        }
-        .checkbox-group input[type="checkbox"] {
-            width: auto;
-            margin-right: 8px;
-            margin-top: 0;
-            cursor: pointer;
-        }
+        .checkbox-group label { display: flex; align-items: center; margin-top: 0; margin-bottom: 5px; font-weight: normal; font-size: 0.9em; cursor: pointer; }
+        .checkbox-group input[type="checkbox"] { width: auto; margin-right: 8px; margin-top: 0; cursor: pointer; }
 
-        .btn-group {
-            display: flex;
-            gap: 10px;
-            margin-top: 20px;
-        }
-        .save-btn {
-            flex: 2;
-            background: #3b82f6;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-        }
+        .btn-group { display: flex; gap: 10px; margin-top: 20px; }
+        .save-btn { flex: 2; background: #3b82f6; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; font-weight: bold; }
         .save-btn:hover { background: #2563eb; }
-        
-        .delete-btn {
-            flex: 1;
-            background: #ef4444;
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            display: none; /* Hidden by default when creating new event */
-        }
+        .delete-btn { flex: 1; background: #ef4444; color: white; border: none; padding: 10px; border-radius: 5px; cursor: pointer; font-weight: bold; display: none; }
         .delete-btn:hover { background: #dc2626; }
-        
-        /* Reset button for clearing storage */
-        .reset-storage-btn {
-            margin-top: 30px;
-            background: none;
-            border: 1px solid #ccc;
-            color: #6b7280;
-            padding: 6px 12px;
-            cursor: pointer;
-            font-size: 0.8em;
-            border-radius: 4px;
-        }
-        .reset-storage-btn:hover {
-            background: #f3f4f6;
-            color: #ef4444;
-        }
     </style>
 </head>
 <body>
 
+<div id="loading" class="loading-overlay">Syncing with Google Sheets...</div>
+
 <div class="calendar-container">
     <div class="header">
         <button id="prevBtn">&larr; Previous</button>
-        <h2 id="monthYear">August 2026</h2>
+        <h2 id="monthYear">Loading...</h2>
         <button id="nextBtn">Next &rarr;</button>
     </div>
     <div class="days-row">
-        <div>Sun</div>
-        <div>Mon</div>
-        <div>Tue</div>
-        <div>Wed</div>
-        <div>Thu</div>
-        <div>Fri</div>
-        <div>Sat</div>
+        <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
     </div>
-    <div class="grid" id="calendarGrid">
-        <!-- Cells will be generated here by JavaScript -->
-    </div>
+    <div class="grid" id="calendarGrid"></div>
 </div>
 
 <div class="legend">
     <div class="legend-item"><div class="legend-color group-day-trip"></div> Day Trip</div>
     <div class="legend-item"><div class="legend-color group-1"></div> Group 1</div>
     <div class="legend-item"><div class="legend-color group-2"></div> Group 2</div>
-</div>
-
-<div style="text-align: center;">
-    <button class="reset-storage-btn" onclick="resetToDefaults()">Reset All Data to Default</button>
 </div>
 
 <!-- Edit / Add Event Modal -->
@@ -337,20 +148,12 @@
         </select>
         
         <div class="time-inputs">
-            <div>
-                <label for="startTime">Start Time:</label>
-                <input type="time" id="startTime">
-            </div>
-            <div>
-                <label for="endTime">End Time:</label>
-                <input type="time" id="endTime">
-            </div>
+            <div><label for="startTime">Start Time:</label><input type="time" id="startTime"></div>
+            <div><label for="endTime">End Time:</label><input type="time" id="endTime"></div>
         </div>
         
         <label>People:</label>
-        <div id="peopleCheckboxes" class="checkbox-group">
-            <!-- Checkboxes generated by JS -->
-        </div>
+        <div id="peopleCheckboxes" class="checkbox-group"></div>
         
         <label for="eventNote">Note:</label>
         <textarea id="eventNote" rows="3" placeholder="Add some notes..."></textarea>
@@ -363,82 +166,19 @@
 </div>
 
 <script>
-    const STORAGE_KEY = "mrsm_calendar_events";
-    
-    // Default hardcoded events (Only loaded if local storage is empty)
-    const defaultEvents = [
-        {"id": 1, "date": "2026-08-21", "title": "ALOR GAJAH (Melaka)", "group": "Day Trip (August)", "people": ["Fahim", "Amir"], "startTime": "", "endTime": "", "note": ""},
-        {"id": 2, "date": "2026-08-21", "title": "TUN GHAFAR BABA (Melaka)", "group": "Day Trip (August)", "people": ["Fahim", "Amir"], "startTime": "", "endTime": "", "note": ""},
-        {"id": 3, "date": "2026-08-23", "title": "GEMENCHEH (Negeri Sembilan)", "group": "Day Trip (August)", "people": ["Fahim", "Amir"], "startTime": "", "endTime": "", "note": ""},
-        {"id": 4, "date": "2026-08-24", "title": "KUALA KLAWANG (Negeri Sembilan)", "group": "Day Trip (August)", "people": ["Fahmi", "Amir"], "startTime": "", "endTime": "", "note": ""},
-        {"id": 5, "date": "2026-08-26", "title": "TERENDAK (Melaka)", "group": "Day Trip (August)", "people": ["Fahim", "Fahmi"], "startTime": "", "endTime": "", "note": ""},
-        {"id": 6, "date": "2026-08-27", "title": "SUNGAI BESAR (Selangor)", "group": "Day Trip (August)", "people": ["Fahmi", "Amir"], "startTime": "", "endTime": "", "note": ""},
-        {"id": 7, "date": "2026-08-28", "title": "FELDA TROLAK (Perak)", "group": "Day Trip (August)", "people": ["Fahim", "Amir"], "startTime": "", "endTime": "", "note": ""},
-        {"id": 8, "date": "2026-09-09", "title": "PASIR SALAK (Perak)", "group": "Group 2", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 9, "date": "2026-09-09", "title": "JOHOR BAHRU (Johor)", "group": "Group 1", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 10, "date": "2026-09-10", "title": "MERSING (Johor)", "group": "Group 1", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 11, "date": "2026-09-10", "title": "GERIK (Perak)", "group": "Group 2", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 12, "date": "2026-09-11", "title": "KOTA PUTRA (Terengganu)", "group": "Group 1", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 13, "date": "2026-09-12", "title": "KUALA TERENGGANU (Terengganu)", "group": "Group 1", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 14, "date": "2026-09-12", "title": "KUALA BERANG (Terengganu)", "group": "Group 2", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 15, "date": "2026-09-13", "title": "BESUT (Terengganu)", "group": "Group 2", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 16, "date": "2026-09-13", "title": "DUNGUN (Terengganu)", "group": "Group 1", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 17, "date": "2026-09-14", "title": "SULTAN AZLAN SHAH (Perak)", "group": "Group 2", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 18, "date": "2026-09-14", "title": "BESERI (Perlis)", "group": "Group 1", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 19, "date": "2026-09-15", "title": "ARAU (Perlis)", "group": "Group 1", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 20, "date": "2026-09-15", "title": "PARIT (Perak)", "group": "Group 2", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 21, "date": "2026-09-17", "title": "LENGGONG (Perak)", "group": "Group 2", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 22, "date": "2026-09-18", "title": "SUNGAI BESAR (Selangor)", "group": "Group 2", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 23, "date": "2026-09-18", "title": "MUAR (Johor)", "group": "Group 1", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 24, "date": "2026-09-19", "title": "TAIPING (Perak)", "group": "Group 2", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 25, "date": "2026-09-19", "title": "KUALA KUBU BHARU (Selangor)", "group": "Group 1", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 26, "date": "2026-09-20", "title": "MUADZAM SHAH (Pahang)", "group": "Group 1", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 27, "date": "2026-09-20", "title": "LANGKAWI (Kedah)", "group": "Group 2", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 28, "date": "2026-09-21", "title": "KUANTAN (Pahang)", "group": "Group 1", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 29, "date": "2026-09-21", "title": "BALING (Kedah)", "group": "Group 2", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 30, "date": "2026-09-22", "title": "ATM BERA (Pahang)", "group": "Group 1", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 31, "date": "2026-09-22", "title": "MERBOK (Kedah)", "group": "Group 2", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 32, "date": "2026-09-23", "title": "TUN GHAZALI SHAFIE (Pahang)", "group": "Group 1", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 33, "date": "2026-09-23", "title": "KUBANG PASU (Kedah)", "group": "Group 2", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 34, "date": "2026-09-24", "title": "BENTONG (Pahang)", "group": "Group 1", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 35, "date": "2026-09-24", "title": "PDRM KULIM (Kedah)", "group": "Group 2", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 36, "date": "2026-09-26", "title": "TUN ABDUL RAZAK (Pahang)", "group": "Group 1", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 37, "date": "2026-09-26", "title": "PENDANG (Kedah)", "group": "Group 2", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 38, "date": "2026-09-28", "title": "TUN ABDULLAH AHMAD BADAWI (Pulau Pinang)", "group": "Group 1", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 39, "date": "2026-09-29", "title": "BALIK PULAU (Pulau Pinang)", "group": "Group 1", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 40, "date": "2026-09-30", "title": "TRANSKRIAN (Pulau Pinang)", "group": "Group 1", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 41, "date": "2026-10-03", "title": "JELI (Kelantan)", "group": "Group 1", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 42, "date": "2026-10-03", "title": "PENGKALAN CHEPA (Kelantan)", "group": "Group 2", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 43, "date": "2026-10-04", "title": "KUALA KRAI (Kelantan)", "group": "Group 2", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 44, "date": "2026-10-04", "title": "TUMPAT (Kelantan)", "group": "Group 1", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 45, "date": "2026-10-05", "title": "PASIR TUMBOH (Kelantan)", "group": "Group 2", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 46, "date": "2026-10-10", "title": "KOTA KINABALU (Sabah)", "group": "Group 1", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 47, "date": "2026-10-10", "title": "BINTULU (Sarawak)", "group": "Group 2", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 48, "date": "2026-10-11", "title": "KUCHING (Sarawak)", "group": "Group 2", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 49, "date": "2026-10-11", "title": "SEMPORNA (Sabah)", "group": "Group 1", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 50, "date": "2026-10-12", "title": "BETONG (Sarawak)", "group": "Group 2", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 51, "date": "2026-10-12", "title": "TUN MUSTAPHA (Sabah)", "group": "Group 1", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 52, "date": "2026-10-13", "title": "MUKAH (Sarawak)", "group": "Group 2", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 53, "date": "2026-10-13", "title": "RANAU (Sabah)", "group": "Group 1", "people": [], "startTime": "", "endTime": "", "note": ""},
-        {"id": 54, "date": "2026-10-14", "title": "TUN MUHAMMAD FUAD STEPHENS (Sabah)", "group": "Group 1", "people": [], "startTime": "", "endTime": "", "note": ""}
-    ];
+    // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE:
+    const SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
 
-    // Attempt to load from storage, fallback to defaults
-    let storedData = localStorage.getItem(STORAGE_KEY);
-    let events = storedData ? JSON.parse(storedData) : [...defaultEvents];
-
-    function saveToStorage() {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(events));
-    }
-
-    // Function to manually reset storage if desired
-    function resetToDefaults() {
-        if(confirm("Are you sure you want to delete all custom additions and reset to the original schedule?")) {
-            localStorage.removeItem(STORAGE_KEY);
-            events = [...defaultEvents];
-            renderCalendar();
-        }
-    }
+    let events = [];
+    let currentDate = new Date(2026, 7, 1); 
+    const grid = document.getElementById("calendarGrid");
+    const monthYearLabel = document.getElementById("monthYear");
+    const loadingOverlay = document.getElementById("loading");
+    const modal = document.getElementById("editModal");
+    const closeBtn = document.getElementById("closeModal");
+    const deleteBtn = document.getElementById("deleteBtn");
+    const peopleContainer = document.getElementById("peopleCheckboxes");
+    let currentEditId = null;
 
     const personColorMap = {
         "Fahim": "#eab308",       
@@ -446,39 +186,45 @@
         "Amir": "#69524b",        
         "Jojo": "#64748B",        
         "Fahmi": "#84cc16",       
-        "Khaidi": "#f97316"       
+        "Khaidi": "#f97316"     
     };
-
-    let currentDate = new Date(2026, 7, 1); 
-    const grid = document.getElementById("calendarGrid");
-    const monthYearLabel = document.getElementById("monthYear");
-    
-    const modal = document.getElementById("editModal");
-    const closeBtn = document.getElementById("closeModal");
-    const deleteBtn = document.getElementById("deleteBtn");
-    const peopleContainer = document.getElementById("peopleCheckboxes");
-    let currentEditId = null;
 
     Object.keys(personColorMap).forEach(person => {
         const lbl = document.createElement("label");
         const chk = document.createElement("input");
-        chk.type = "checkbox";
-        chk.value = person;
-        
-        lbl.appendChild(chk);
-        lbl.appendChild(document.createTextNode(" " + person));
+        chk.type = "checkbox"; chk.value = person;
+        lbl.appendChild(chk); lbl.appendChild(document.createTextNode(" " + person));
         peopleContainer.appendChild(lbl);
     });
 
+    function showLoading(show) {
+        loadingOverlay.style.display = show ? "flex" : "none";
+    }
+
+    function fetchEvents() {
+        showLoading(true);
+        fetch(SCRIPT_URL)
+            .then(res => res.json())
+            .then(data => {
+                events = data;
+                renderCalendar();
+                showLoading(false);
+            })
+            .catch(err => {
+                console.error(err);
+                alert("Failed to load events from Google Sheets.");
+                showLoading(false);
+            });
+    }
+
     function renderCalendar() {
-        grid.innerHTML = "";
+        grid.innerHTML = "https://script.google.com/macros/s/AKfycbz8hlyuHzE2Ve7WI6PF8Gm1XhjuWa1RzD6Wdx2vdAo8JEvUPA80dcrR_996WOjs1BCN/exec";
         const month = currentDate.getMonth();
         const year = currentDate.getFullYear();
-        
         const firstDay = new Date(year, month, 1).getDay();
         const daysInMonth = new Date(year, month + 1, 0).getDate();
-        
         const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        
         monthYearLabel.textContent = `${monthNames[month]} ${year}`;
 
         for (let i = 0; i < firstDay; i++) {
@@ -490,52 +236,36 @@
         for (let day = 1; day <= daysInMonth; day++) {
             const cell = document.createElement("div");
             cell.className = "cell";
-            
             const dateStr = `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
             
-            // Clicking empty area of a cell opens "Add Event" for that date
-            cell.onclick = (e) => {
-                if(e.target === cell) openEditor(null, dateStr);
-            };
+            cell.onclick = (e) => { if(e.target === cell) openEditor(null, dateStr); };
             
             const dateDiv = document.createElement("div");
-            dateDiv.className = "date-number";
-            dateDiv.textContent = day;
+            dateDiv.className = "date-number"; dateDiv.textContent = day;
             cell.appendChild(dateDiv);
 
             const dayEvents = events.filter(e => e.date === dateStr);
             dayEvents.forEach(evt => {
                 const eventDiv = document.createElement("div");
                 eventDiv.className = "event";
-                
-                eventDiv.onclick = (e) => {
-                    e.stopPropagation(); // Prevents cell.onclick from firing
-                    openEditor(evt.id);
-                };
+                eventDiv.onclick = (e) => { e.stopPropagation(); openEditor(evt.id); };
                 
                 if (evt.group === "Day Trip (August)") eventDiv.classList.add("group-day-trip");
                 else if (evt.group === "Group 1") eventDiv.classList.add("group-1");
                 else if (evt.group === "Group 2") eventDiv.classList.add("group-2");
-                else eventDiv.style.backgroundColor = "#6b7280"; // Fallback grey
+                else eventDiv.style.backgroundColor = "#6b7280"; 
 
                 const titleDiv = document.createElement("div");
-                titleDiv.className = "event-title";
-                titleDiv.textContent = evt.title;
+                titleDiv.className = "event-title"; titleDiv.textContent = evt.title;
                 eventDiv.appendChild(titleDiv);
 
                 if (evt.startTime || evt.endTime) {
                     const timeDiv = document.createElement("div");
                     timeDiv.className = "event-time";
                     let timeText = "🕒 ";
-                    
-                    if (evt.startTime && evt.endTime) {
-                        timeText += `${evt.startTime} - ${evt.endTime}`;
-                    } else if (evt.startTime) {
-                        timeText += `${evt.startTime}`;
-                    } else if (evt.endTime) {
-                        timeText += `Until ${evt.endTime}`;
-                    }
-
+                    if (evt.startTime && evt.endTime) timeText += `${evt.startTime} - ${evt.endTime}`;
+                    else if (evt.startTime) timeText += `${evt.startTime}`;
+                    else if (evt.endTime) timeText += `Until ${evt.endTime}`;
                     timeDiv.textContent = timeText;
                     eventDiv.appendChild(timeDiv);
                 }
@@ -556,11 +286,8 @@
                     noteDiv.textContent = evt.note;
                     eventDiv.appendChild(noteDiv);
                 }
-
-                eventDiv.title = `Click to edit: ${evt.title}`;
                 cell.appendChild(eventDiv);
             });
-
             grid.appendChild(cell);
         }
     }
@@ -570,10 +297,8 @@
         checkboxes.forEach(chk => chk.checked = false);
 
         if (eventId) {
-            // Edit existing event
             const evt = events.find(e => e.id === eventId);
             if(!evt) return;
-            
             currentEditId = eventId;
             document.getElementById("modalTitle").textContent = `Edit Event`;
             document.getElementById("eventDate").value = evt.date;
@@ -589,10 +314,8 @@
                     if (chk) chk.checked = true;
                 });
             }
-            
-            deleteBtn.style.display = "block"; // Show delete button
+            deleteBtn.style.display = "block"; 
         } else {
-            // Create new event
             currentEditId = null;
             document.getElementById("modalTitle").textContent = `Add New Event`;
             document.getElementById("eventDate").value = defaultDate;
@@ -601,10 +324,8 @@
             document.getElementById("startTime").value = "";
             document.getElementById("endTime").value = "";
             document.getElementById("eventNote").value = "";
-            
-            deleteBtn.style.display = "none"; // Hide delete button
+            deleteBtn.style.display = "none";
         }
-        
         modal.style.display = "block";
     }
 
@@ -614,11 +335,7 @@
     document.getElementById("saveBtn").onclick = () => {
         const dateVal = document.getElementById("eventDate").value;
         const titleVal = document.getElementById("eventTitle").value.trim();
-        
-        if(!dateVal || !titleVal) {
-            alert("Please fill in both Date and Title.");
-            return;
-        }
+        if(!dateVal || !titleVal) { alert("Please fill in both Date and Title."); return; }
 
         const groupVal = document.getElementById("eventGroup").value;
         const startVal = document.getElementById("startTime").value;
@@ -626,27 +343,17 @@
         const noteVal = document.getElementById("eventNote").value;
         
         const selectedPeople = [];
-        peopleContainer.querySelectorAll("input[type='checkbox']:checked").forEach(chk => {
-            selectedPeople.push(chk.value);
-        });
+        peopleContainer.querySelectorAll("input[type='checkbox']:checked").forEach(chk => selectedPeople.push(chk.value));
 
-        if (currentEditId) {
-            // Update Existing
-            const evtIndex = events.findIndex(e => e.id === currentEditId);
-            if (evtIndex > -1) {
-                events[evtIndex].date = dateVal;
-                events[evtIndex].title = titleVal;
-                events[evtIndex].group = groupVal;
-                events[evtIndex].startTime = startVal;
-                events[evtIndex].endTime = endVal;
-                events[evtIndex].people = selectedPeople;
-                events[evtIndex].note = noteVal;
-            }
-        } else {
-            // Create New
-            const newId = events.length > 0 ? Math.max(...events.map(e => e.id)) + 1 : 1;
-            events.push({
-                id: newId,
+        let targetId = currentEditId;
+        if (!targetId) {
+            targetId = events.length > 0 ? Math.max(...events.map(e => e.id)) + 1 : 1;
+        }
+
+        const payload = {
+            action: "save",
+            event: {
+                id: targetId,
                 date: dateVal,
                 title: titleVal,
                 group: groupVal,
@@ -654,34 +361,54 @@
                 endTime: endVal,
                 people: selectedPeople,
                 note: noteVal
-            });
-        }
-        
-        saveToStorage();
+            }
+        };
+
         modal.style.display = "none";
-        renderCalendar(); 
+        showLoading(true);
+
+        fetch(SCRIPT_URL, {
+            method: "POST",
+            body: JSON.stringify(payload)
+        })
+        .then(res => res.json())
+        .then(() => fetchEvents())
+        .catch(err => {
+            console.error(err);
+            alert("Error saving event.");
+            showLoading(false);
+        });
     };
 
     document.getElementById("deleteBtn").onclick = () => {
         if(confirm("Are you sure you want to delete this event?")) {
-            events = events.filter(e => e.id !== currentEditId);
-            saveToStorage();
+            const payload = {
+                action: "delete",
+                event: { id: currentEditId }
+            };
+
             modal.style.display = "none";
-            renderCalendar();
+            showLoading(true);
+
+            fetch(SCRIPT_URL, {
+                method: "POST",
+                body: JSON.stringify(payload)
+            })
+            .then(res => res.json())
+            .then(() => fetchEvents())
+            .catch(err => {
+                console.error(err);
+                alert("Error deleting event.");
+                showLoading(false);
+            });
         }
     };
 
-    document.getElementById("prevBtn").addEventListener("click", () => {
-        currentDate.setMonth(currentDate.getMonth() - 1);
-        renderCalendar();
-    });
+    document.getElementById("prevBtn").addEventListener("click", () => { currentDate.setMonth(currentDate.getMonth() - 1); renderCalendar(); });
+    document.getElementById("nextBtn").addEventListener("click", () => { currentDate.setMonth(currentDate.getMonth() + 1); renderCalendar(); });
 
-    document.getElementById("nextBtn").addEventListener("click", () => {
-        currentDate.setMonth(currentDate.getMonth() + 1);
-        renderCalendar();
-    });
-
-    renderCalendar();
+    // Initial load
+    fetchEvents();
 </script>
 </body>
 </html>
