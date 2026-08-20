@@ -201,26 +201,49 @@
         loadingOverlay.style.display = show ? "flex" : "none";
     }
 
+    // Helper function to convert Google's long time string into AM/PM
+    function formatToAMPM(timeStr) {
+        if (!timeStr) return "";
+        const d = new Date(timeStr);
+        
+        // If it's a valid long date string from Google
+        if (!isNaN(d.getTime())) {
+            let hours = d.getHours();
+            let minutes = d.getMinutes();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+            hours = hours % 12;
+            hours = hours ? hours : 12; // the hour '0' should be '12'
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            return `${hours}:${minutes} ${ampm}`;
+        }
+        
+        // If it's already normal text, just return it as-is
+        return timeStr;
+    }
+
     function fetchEvents() {
         showLoading(true);
         const cacheBusterUrl = SCRIPT_URL + "?t=" + new Date().getTime();
-        
-        console.log("1. Trying to fetch from:", cacheBusterUrl);
 
         fetch(cacheBusterUrl, { redirect: "follow" })
             .then(res => res.json())
             .then(data => {
-                console.log("2. SUCCESS! Google sent this data back:", data);
                 
-                // --- THE FIX: Force all dates into YYYY-MM-DD format ---
+                // --- THE FIX: Force dates and times into proper formats ---
                 events = data.map(evt => {
+                    // Fix Date
                     const d = new Date(evt.date);
-                    if (!isNaN(d.getTime())) { // If it is a valid date
+                    if (!isNaN(d.getTime())) {
                         const yyyy = d.getFullYear();
                         const mm = String(d.getMonth() + 1).padStart(2, '0');
                         const dd = String(d.getDate()).padStart(2, '0');
                         evt.date = `${yyyy}-${mm}-${dd}`;
                     }
+                    
+                    // Fix Times to AM/PM
+                    evt.startTime = formatToAMPM(evt.startTime);
+                    evt.endTime = formatToAMPM(evt.endTime);
+                    
                     return evt;
                 });
                 // -------------------------------------------------------
@@ -229,7 +252,8 @@
                 showLoading(false);
             })
             .catch(err => {
-                console.error("2. ERROR! Something broke:", err);
+                console.error("ERROR! Something broke:", err);
+                alert("Failed to load events. Check console for details.");
                 showLoading(false);
             });
     }
