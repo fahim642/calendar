@@ -203,7 +203,11 @@
 
     function fetchEvents() {
         showLoading(true);
-        fetch(SCRIPT_URL)
+        
+        // Add a random timestamp to trick the browser into NOT caching the old data
+        const cacheBusterUrl = SCRIPT_URL + "?t=" + new Date().getTime();
+        
+        fetch(cacheBusterUrl)
             .then(res => res.json())
             .then(data => {
                 events = data;
