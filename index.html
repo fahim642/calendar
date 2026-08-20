@@ -203,24 +203,28 @@
 
     function fetchEvents() {
         showLoading(true);
-        
-        // Add a random timestamp to trick the browser into NOT caching the old data
         const cacheBusterUrl = SCRIPT_URL + "?t=" + new Date().getTime();
         
-        fetch(cacheBusterUrl)
+        console.log("1. Trying to fetch from:", cacheBusterUrl);
+
+        fetch(cacheBusterUrl, { redirect: "follow" })
             .then(res => res.json())
             .then(data => {
+                console.log("2. SUCCESS! Google sent this data back:", data);
+                
+                if (data.length === 0) {
+                    alert("Google connected, but it sent back 0 events! (Check your Apps Script Version)");
+                }
+
                 events = data;
                 renderCalendar();
                 showLoading(false);
             })
             .catch(err => {
-                console.error(err);
-                alert("Failed to load events from Google Sheets.");
+                console.error("2. ERROR! Something broke:", err);
                 showLoading(false);
             });
     }
-
     function renderCalendar() {
         grid.innerHTML = "";
         const month = currentDate.getMonth();
