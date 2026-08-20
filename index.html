@@ -167,7 +167,7 @@
 
 <script>
     // PASTE YOUR GOOGLE APPS SCRIPT WEB APP URL HERE:
-    const SCRIPT_URL = "YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+    const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbz8hlyuHzE2Ve7WI6PF8Gm1XhjuWa1RzD6Wdx2vdAo8JEvUPA80dcrR_996WOjs1BCN/exec";
 
     let events = [];
     let currentDate = new Date(2026, 7, 1); 
@@ -218,7 +218,7 @@
     }
 
     function renderCalendar() {
-        grid.innerHTML = "https://script.google.com/macros/s/AKfycbz8hlyuHzE2Ve7WI6PF8Gm1XhjuWa1RzD6Wdx2vdAo8JEvUPA80dcrR_996WOjs1BCN/exec";
+        grid.innerHTML = "";
         const month = currentDate.getMonth();
         const year = currentDate.getFullYear();
         const firstDay = new Date(year, month, 1).getDay();
