@@ -6,20 +6,20 @@
     <title>MRSM Event Calendar</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f3f4f6;
-            color: #374151;
-            margin: 0;
-            padding: 20px;
-        }
+			font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+			background-color: #f3f4f6;
+			color: #374151;
+			margin: 0;
+			padding: 10px; /* Reduced for wider screens */
+		}
         .calendar-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            background: #ffffff;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            overflow: hidden;
-        }
+			max-width: 95%; /* Allows it to stretch across large monitors */
+			margin: 0 auto;
+			background: #ffffff;
+			border-radius: 10px;
+			box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+			overflow: hidden;
+		}
         .header {
             display: flex;
             justify-content: space-between;
@@ -54,10 +54,12 @@
             min-width: 700px; 
         }
         .cell {
-            border-right: 1px solid #e5e7eb; border-bottom: 1px solid #e5e7eb;
-            padding: 8px; min-height: 120px; background: #ffffff;
-            display: flex; flex-direction: column; cursor: pointer; transition: background 0.1s;
-        }
+			border-right: 1px solid #e5e7eb; border-bottom: 1px solid #e5e7eb;
+			padding: 8px; 
+			min-height: 14vh; /* Scales height dynamically with the screen */
+			background: #ffffff;
+			display: flex; flex-direction: column; cursor: pointer; transition: background 0.1s;
+		}
         .cell:hover { background: #f9fafb; }
         .cell.empty { background: #f9fafb; cursor: default; }
         .date-number { font-weight: bold; margin-bottom: 8px; align-self: flex-end; color: #6b7280; font-size: 0.9em; pointer-events: none; }
@@ -69,7 +71,13 @@
         .event:hover { opacity: 0.9; }
         .event-title { font-weight: bold; margin-bottom: 4px; }
         .event-time { font-weight: bold; color: #fffae6; margin-bottom: 4px; }
-        .event-note { font-style: italic; margin-top: 4px; border-top: 1px solid rgba(255,255,255,0.3); padding-top: 4px; }
+        .event-note { 
+			font-style: italic; 
+			margin-top: 4px; 
+			border-top: 1px solid rgba(255,255,255,0.3); 
+			padding-top: 4px; 
+			white-space: pre-wrap; /* This forces HTML to respect your line breaks */
+		}
         .event-person {
             padding: 2px 6px; margin-bottom: 2px; border-radius: 3px;
             font-size: 0.9em; font-weight: 500; box-shadow: 0 1px 2px rgba(0,0,0,0.2); 
