@@ -246,24 +246,30 @@
         loadingOverlay.style.display = show ? "flex" : "none";
     }
 
-    // Helper function to convert Google's long time string into AM/PM
-    function formatToAMPM(timeStr) {
+    // Extracts 24-hour time (HH:mm) for the HTML input field
+    function parseTo24Hour(timeStr) {
         if (!timeStr) return "";
         const d = new Date(timeStr);
-        
-        // If it's a valid long date string from Google
         if (!isNaN(d.getTime())) {
-            let hours = d.getHours();
-            let minutes = d.getMinutes();
+            const hours = String(d.getHours()).padStart(2, '0');
+            const minutes = String(d.getMinutes()).padStart(2, '0');
+            return `${hours}:${minutes}`;
+        }
+        return timeStr;
+    }
+
+    // Converts 24-hour time to AM/PM for visual display on the calendar
+    function formatToAMPM(time24) {
+        if (!time24) return "";
+        const match = time24.match(/^(\d{1,2}):(\d{2})/);
+        if (match) {
+            let hours = parseInt(match[1], 10);
+            let minutes = match[2];
             const ampm = hours >= 12 ? 'PM' : 'AM';
-            hours = hours % 12;
-            hours = hours ? hours : 12; // the hour '0' should be '12'
-            minutes = minutes < 10 ? '0' + minutes : minutes;
+            hours = hours % 12 || 12; // '0' becomes '12'
             return `${hours}:${minutes} ${ampm}`;
         }
-        
-        // If it's already normal text, just return it as-is
-        return timeStr;
+        return time24;
     }
 
     function fetchEvents() {
@@ -275,6 +281,7 @@
             .then(data => {
                 
                 // --- THE FIX: Force dates and times into proper formats ---
+                // --- THE FIX: Force dates and times into proper formats ---
                 events = data.map(evt => {
                     // Fix Date
                     const d = new Date(evt.date);
@@ -285,9 +292,9 @@
                         evt.date = `${yyyy}-${mm}-${dd}`;
                     }
                     
-                    // Fix Times to AM/PM
-                    evt.startTime = formatToAMPM(evt.startTime);
-                    evt.endTime = formatToAMPM(evt.endTime);
+                    // Fix Times for the <input type="time"> (requires HH:mm format)
+                    evt.startTime = parseTo24Hour(evt.startTime);
+                    evt.endTime = parseTo24Hour(evt.endTime);
                     
                     return evt;
                 });
@@ -349,9 +356,15 @@
                     const timeDiv = document.createElement("div");
                     timeDiv.className = "event-time";
                     let timeText = "🕒 ";
-                    if (evt.startTime && evt.endTime) timeText += `${evt.startTime} - ${evt.endTime}`;
-                    else if (evt.startTime) timeText += `${evt.startTime}`;
-                    else if (evt.endTime) timeText += `Until ${evt.endTime}`;
+                    
+                    // Convert the stored 24-hour format to AM/PM just for display
+                    const displayStart = formatToAMPM(evt.startTime);
+                    const displayEnd = formatToAMPM(evt.endTime);
+                    
+                    if (displayStart && displayEnd) timeText += `${displayStart} - ${displayEnd}`;
+                    else if (displayStart) timeText += `${displayStart}`;
+                    else if (displayEnd) timeText += `Until ${displayEnd}`;
+                    
                     timeDiv.textContent = timeText;
                     eventDiv.appendChild(timeDiv);
                 }
